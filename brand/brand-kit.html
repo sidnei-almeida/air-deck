@@ -1,0 +1,1312 @@
+<title>Kit de Marca Air-Deck</title>
+<meta name="description" content="Identidade visual do Air-Deck: símbolo, cor, tipografia, gestos, movimento e interface.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap">
+<style>
+:root {
+  --bg: #0B0D13;
+  --surface: #121621;
+  --surface-2: #191E2B;
+  --line: #252B3A;
+  --line-soft: #1A1F2C;
+  --ink: #EEF0F6;
+  --muted: #8A91A5;
+  --faint: #5A6175;
+  --accent: #FFB23E;
+  --accent-text: #FFB23E;
+  --on-accent: #0B0D13;
+  --trace: #7CD4EA;
+  --ok: #52D6A0;
+  --lost: #F0677B;
+
+  /* palco: sempre escuro, em qualquer tema */
+  --stage: #0B0D13;
+  --stage-2: #151924;
+  --stage-line: #262C3B;
+  --stage-ink: #EEF0F6;
+  --stage-muted: #8A91A5;
+  --stage-trace: #7CD4EA;
+
+  --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --glide: cubic-bezier(.22, 1, .36, 1);
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #EDEFF4; --surface: #FFFFFF; --surface-2: #E3E6EE; --line: #CFD4E0; --line-soft: #DCE0E9;
+    --ink: #0B0D13; --muted: #555C70; --faint: #8990A3;
+    --accent-text: #9A5A00; --trace: #1A7C99; --ok: #138A5E; --lost: #C4344B;
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #EDEFF4; --surface: #FFFFFF; --surface-2: #E3E6EE; --line: #CFD4E0; --line-soft: #DCE0E9;
+  --ink: #0B0D13; --muted: #555C70; --faint: #8990A3;
+  --accent-text: #9A5A00; --trace: #1A7C99; --ok: #138A5E; --lost: #C4344B;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-inline: clamp(16px, 4vw, 56px);
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1240px; margin-inline: auto; }
+h1, h2, h3, p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.label {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500; line-height: 1.2;
+  text-transform: uppercase; letter-spacing: .08em; color: var(--muted);
+}
+.pt { color: var(--accent); }
+
+/* ---------- wordmark ---------- */
+.wm {
+  font-family: var(--font-display); font-weight: 650; font-stretch: 88%;
+  letter-spacing: -0.045em; line-height: 1; white-space: nowrap;
+}
+.wm-i { position: relative; display: inline-block; }
+.wm-i::after {
+  content: ""; position: absolute; left: 50%; top: .02em;
+  width: .165em; height: .165em; margin-left: -.105em; border-radius: 50%;
+  background: var(--dot, #FFB23E);
+}
+.mk { display: block; flex: none; }
+
+/* ---------- top bar ---------- */
+.top {
+  position: sticky; top: 0; z-index: 10;
+  margin-inline: calc(-1 * clamp(16px, 4vw, 56px));
+  padding-inline: clamp(16px, 4vw, 56px);
+  background: color-mix(in oklab, var(--bg) 84%, transparent);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.top-in { display: flex; align-items: center; gap: 28px; height: 60px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 22px; flex: none; }
+.brand .mk { width: 26px; height: 26px; color: var(--ink); }
+.nav { display: flex; gap: 22px; overflow-x: auto; scrollbar-width: none; flex: 1; }
+.nav::-webkit-scrollbar { display: none; }
+.nav a { text-decoration: none; font-size: 14px; color: var(--muted); white-space: nowrap; transition: color .18s; }
+.nav a:hover { color: var(--ink); }
+.top .ver { flex: none; }
+
+/* ---------- hero ---------- */
+.hero {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 5vw, 64px); align-items: center;
+  padding-block: clamp(48px, 7vw, 96px) clamp(64px, 8vw, 112px);
+}
+.hero-copy { display: grid; gap: 28px; }
+.display {
+  font-family: var(--font-display); font-weight: 620; font-stretch: 86%;
+  font-size: clamp(44px, 6.2vw, 86px); line-height: .92; letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.display .soft { color: var(--muted); }
+.lede { font-size: 18px; line-height: 1.6; color: var(--muted); max-width: 44ch; }
+.lede strong { color: var(--ink); font-weight: 500; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; }
+.fact {
+  font-family: var(--font-mono); font-size: 12px; color: var(--muted);
+  border: 1px solid var(--line); border-radius: 999px; padding: 5px 11px;
+}
+
+/* ---------- stage demo ---------- */
+.stage-wrap { display: grid; gap: 14px; }
+.stage {
+  position: relative; background: var(--stage); color: var(--stage-ink);
+  border-radius: 20px; padding: 14px clamp(14px, 2.4vw, 28px) 16px;
+  display: grid; gap: 14px; overflow: hidden; touch-action: pan-y;
+  box-shadow: 0 0 0 1px var(--stage-line), 0 40px 80px -40px rgb(0 0 0 / .55);
+  isolation: isolate;
+}
+.stage::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(60% 50% at 50% 42%, rgb(255 178 62 / .07), transparent 70%);
+}
+.hud-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.hud-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.chip {
+  display: inline-flex; align-items: center; gap: 8px; height: 28px; padding: 0 12px;
+  border-radius: 999px; background: rgb(21 25 36 / .85); border: 1px solid var(--stage-line);
+  font-family: var(--font-mono); font-size: 12px; color: var(--stage-ink); white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.chip i { width: 7px; height: 7px; border-radius: 50%; background: #52D6A0; box-shadow: 0 0 0 3px rgb(82 214 160 / .18); }
+.chip[data-state="search"] i { background: #8A91A5; box-shadow: 0 0 0 3px rgb(138 145 165 / .18); animation: pulse 1.2s ease-in-out infinite; }
+.chip[data-state="lost"] i { background: #F0677B; box-shadow: 0 0 0 3px rgb(240 103 123 / .18); }
+.chip.dim { color: var(--stage-muted); }
+@keyframes pulse { 50% { opacity: .35; } }
+
+.slide {
+  aspect-ratio: 16 / 9; max-width: 100%; background: #F6F6F3; color: #14161C;
+  border-radius: 6px; padding: 5.5% 6.5%; display: grid; grid-template-rows: auto auto 1fr auto;
+  container-type: inline-size; box-shadow: 0 20px 50px -20px rgb(0 0 0 / .7);
+  user-select: none;
+}
+.slide .s-eyebrow { font-family: var(--font-mono); font-size: 2.1cqi; letter-spacing: .08em; text-transform: uppercase; color: #6B7080; }
+.slide h3 { font-family: var(--font-display); font-weight: 650; font-stretch: 88%; font-size: 7cqi; line-height: 1; letter-spacing: -0.03em; margin-top: 1.6cqi; }
+.slide .s-eq { align-self: center; justify-self: start; font-family: var(--font-body); font-size: 3.6cqi; font-weight: 500; letter-spacing: -0.01em; }
+.slide .s-eq b { font-weight: 600; background: #FFE9C7; padding: 0 .2em; border-radius: 3px; }
+.slide .s-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3cqi; border-top: 1px solid #DADCE2; padding-top: 2.4cqi; }
+.slide .s-cols div { font-size: 2.2cqi; line-height: 1.35; color: #4A4F5C; }
+.slide .s-cols strong { display: block; font-size: 2.6cqi; color: #14161C; font-weight: 600; margin-bottom: .4cqi; }
+.slide .s-cols strong span { display: inline-block; }
+#laser { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+.ctrl { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.ctrl label { font-family: var(--font-mono); font-size: 12px; color: var(--stage-muted); text-transform: uppercase; letter-spacing: .08em; }
+.range-row { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 200px; }
+.range-row .end { font-size: 12px; color: var(--stage-muted); white-space: nowrap; }
+input[type="range"] {
+  -webkit-appearance: none; appearance: none; flex: 1; height: 28px; background: transparent; cursor: pointer; margin: 0;
+}
+input[type="range"]::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: linear-gradient(90deg, #FFB23E var(--p, 50%), #262C3B var(--p, 50%)); }
+input[type="range"]::-moz-range-track { height: 4px; border-radius: 4px; background: #262C3B; }
+input[type="range"]::-moz-range-progress { height: 4px; border-radius: 4px; background: #FFB23E; }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; margin-top: -7px; border-radius: 50%; background: #EEF0F6; border: 4px solid #FFB23E; box-shadow: 0 0 0 5px rgb(255 178 62 / .16); }
+input[type="range"]::-moz-range-thumb { width: 12px; height: 12px; border-radius: 50%; background: #EEF0F6; border: 4px solid #FFB23E; box-shadow: 0 0 0 5px rgb(255 178 62 / .16); }
+.readout { font-family: var(--font-mono); font-size: 12px; color: var(--stage-ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.readout span { color: var(--stage-muted); }
+.caption { display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; font-size: 13px; color: var(--muted); }
+.legend { display: flex; gap: 16px; font-family: var(--font-mono); font-size: 12px; }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.legend .raw { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--trace); }
+.legend .flt { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+
+/* ---------- sections ---------- */
+.sec {
+  display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+  gap: clamp(24px, 4vw, 56px); padding-block: clamp(64px, 8vw, 104px);
+  border-top: 1px solid var(--line-soft);
+}
+.sec-head { display: grid; gap: 14px; align-content: start; position: sticky; top: 92px; }
+.sec-head h2 {
+  font-family: var(--font-display); font-weight: 620; font-stretch: 88%;
+  font-size: clamp(32px, 3.4vw, 42px); line-height: 1; letter-spacing: -0.025em; text-wrap: balance;
+}
+.sec-head p { color: var(--muted); font-size: 15px; max-width: 34ch; }
+.sec-body { display: grid; gap: clamp(40px, 5vw, 64px); min-width: 0; }
+.sub { display: grid; gap: 20px; }
+.sub > h3 { font-size: 13px; }
+
+/* essência */
+.statement {
+  font-family: var(--font-display); font-weight: 500; font-stretch: 92%;
+  font-size: clamp(26px, 2.9vw, 38px); line-height: 1.15; letter-spacing: -0.02em;
+  text-wrap: balance; max-width: 30ch;
+}
+.statement em { font-style: normal; color: var(--muted); }
+.pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.pillar { display: grid; gap: 10px; align-content: start; padding-top: 18px; border-top: 2px solid var(--ink); }
+.pillar h3 { font-family: var(--font-display); font-size: 24px; font-weight: 600; font-stretch: 90%; letter-spacing: -0.015em; }
+.pillar p { color: var(--muted); font-size: 15px; }
+.voice { width: 100%; border-collapse: collapse; font-size: 15px; }
+.voice th { text-align: left; padding: 0 16px 12px 0; }
+.voice td { padding: 14px 16px 14px 0; border-top: 1px solid var(--line); vertical-align: top; width: 50%; }
+.voice td:first-child { color: var(--ink); }
+.voice td:last-child { color: var(--faint); text-decoration: line-through; text-decoration-color: color-mix(in oklab, var(--lost) 60%, transparent); }
+.voice th.say::before, .voice th.avoid::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 8px; vertical-align: 1px; }
+.voice th.say::before { background: var(--ok); }
+.voice th.avoid::before { background: var(--lost); }
+
+/* logo */
+.logo-hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 16px; }
+.panel { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 14px; padding: 24px; }
+.dark-panel { background: var(--stage); color: var(--stage-ink); border-radius: 14px; padding: 24px; box-shadow: 0 0 0 1px var(--stage-line); }
+.construct svg { width: 100%; height: auto; display: block; }
+.construct .grid line { stroke: #262C3B; stroke-width: .08; }
+.construct .k { fill: none; stroke: #7CD4EA; stroke-width: .12; stroke-dasharray: .6 .5; }
+.construct .kt { font-family: var(--font-mono); font-size: 1.7px; fill: #7CD4EA; }
+.specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 20px; align-content: center; }
+.spec { display: grid; gap: 4px; }
+.spec .v { font-family: var(--font-display); font-size: 30px; font-weight: 600; font-stretch: 88%; letter-spacing: -0.02em; line-height: 1; font-variant-numeric: tabular-nums; }
+.spec p { font-size: 13px; color: var(--muted); }
+.lockups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.lockup-tile { display: grid; gap: 10px; }
+.lockup {
+  aspect-ratio: 4 / 3; max-width: 100%; border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: .3em;
+  font-size: clamp(30px, 3.1vw, 40px); container-type: inline-size;
+}
+.lockup .mk { width: 1.22em; height: 1.22em; }
+.lk-dark { background: #0B0D13; color: #EEF0F6; box-shadow: 0 0 0 1px #262C3B; }
+.lk-light { background: #EEF0F6; color: #0B0D13; box-shadow: 0 0 0 1px var(--line); }
+.lk-amber { background: #FFB23E; color: #0B0D13; --dot: #0B0D13; }
+.lk-amber .mk { width: 2.4em; height: 2.4em; }
+.tile-cap { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted); }
+.sizes { display: flex; align-items: flex-end; gap: 28px; flex-wrap: wrap; }
+.sizes figure { margin: 0; display: grid; gap: 10px; justify-items: start; }
+.sizes .mk { color: var(--ink); }
+.sizes figcaption { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.sizes .row-lock { display: flex; align-items: center; gap: 6px; font-size: 17px; }
+.sizes .row-lock .mk { width: 21px; height: 21px; }
+.donts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.dont { display: grid; gap: 10px; }
+.dont .box { aspect-ratio: 1; max-width: 100%; border-radius: 12px; background: var(--surface); border: 1px solid var(--line-soft); display: grid; place-items: center; position: relative; }
+.dont .box svg { width: 42%; height: auto; color: var(--ink); }
+.dont .box::after { content: ""; position: absolute; top: 12px; right: 12px; width: 14px; height: 14px;
+  background: linear-gradient(45deg, transparent 43%, var(--lost) 43% 57%, transparent 57%), linear-gradient(-45deg, transparent 43%, var(--lost) 43% 57%, transparent 57%); }
+.dont p { font-size: 13px; color: var(--muted); }
+
+/* cor */
+.primary-sw { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 16px; }
+.sw-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.sw { display: grid; gap: 12px; align-content: start; }
+.sw .chipc {
+  border-radius: 14px; aspect-ratio: 4 / 3; max-width: 100%; padding: 16px; display: flex; flex-direction: column; justify-content: space-between;
+  box-shadow: inset 0 0 0 1px rgb(128 136 160 / .18);
+}
+.primary-sw .sw .chipc { aspect-ratio: auto; min-height: 220px; padding: 22px; }
+.sw .nm { font-family: var(--font-display); font-weight: 600; font-stretch: 90%; font-size: 22px; letter-spacing: -0.015em; line-height: 1; }
+.primary-sw .sw .nm { font-size: 34px; }
+.sw .hx { font-family: var(--font-mono); font-size: 12px; opacity: .8; }
+.sw .meta { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+.sw .meta .role { color: var(--ink); font-size: 14px; }
+.cr { display: flex; flex-wrap: wrap; gap: 6px; }
+.cr span { font-family: var(--font-mono); font-size: 11px; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cr span b { font-weight: 600; color: var(--ink); }
+.cr span.fail b { color: var(--faint); }
+.ratio-bar { display: flex; height: 56px; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
+.ratio-bar div { min-width: 3px; }
+.ratio-legend { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; font-size: 13px; }
+.ratio-legend div { display: grid; gap: 2px; }
+.ratio-legend b { font-family: var(--font-mono); font-weight: 500; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.note { font-size: 15px; color: var(--muted); max-width: 62ch; }
+.note strong { color: var(--ink); font-weight: 500; }
+.states { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.state { display: grid; gap: 8px; }
+.state .dot { display: flex; align-items: center; gap: 10px; font-weight: 500; }
+.state .dot i { width: 10px; height: 10px; border-radius: 50%; }
+.state p { font-size: 13px; color: var(--muted); }
+
+/* tipografia */
+.specimens { display: grid; gap: 0; }
+.spm { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr); gap: 32px; padding-block: 28px; border-top: 1px solid var(--line); align-items: end; }
+.spm:last-child { border-bottom: 1px solid var(--line); }
+.spm .who { display: grid; gap: 6px; align-content: end; }
+.spm .fam { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+.spm .who p { font-size: 13px; color: var(--muted); }
+.spm .aa { font-size: clamp(64px, 8vw, 112px); line-height: .85; letter-spacing: -0.04em; }
+.spm .say { text-wrap: balance; }
+.f-display { font-family: var(--font-display); font-weight: 620; font-stretch: 86%; }
+.f-body { font-family: var(--font-body); }
+.f-mono { font-family: var(--font-mono); }
+.scale { display: grid; }
+.scale-row { display: grid; grid-template-columns: 130px minmax(0, 1fr) 150px; gap: 20px; align-items: baseline; padding-block: 14px; border-top: 1px solid var(--line-soft); }
+.scale-row .tk { font-family: var(--font-mono); font-size: 12px; color: var(--accent-text); }
+.scale-row .sp { font-family: var(--font-mono); font-size: 12px; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.scale-row .smp { min-width: 0; overflow-wrap: anywhere; }
+
+/* gestos */
+.gestures { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.gesture { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 14px; padding: 18px 18px 20px; display: grid; gap: 14px; align-content: start; }
+.gesture svg { width: 100%; height: auto; display: block; background: var(--bg); border-radius: 10px; }
+.gesture .gh { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.gesture h3 { font-family: var(--font-display); font-size: 22px; font-weight: 600; font-stretch: 90%; letter-spacing: -0.015em; line-height: 1.1; }
+.gesture p { font-size: 14px; color: var(--ink); }
+.gesture .gs { font-family: var(--font-mono); font-size: 12px; color: var(--muted); line-height: 1.5; }
+.tag { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; padding: 2px 8px; border-radius: 999px; border: 1px dashed var(--muted); color: var(--muted); white-space: nowrap; }
+.g-bone { stroke: var(--trace); stroke-width: 1.3; stroke-linecap: round; opacity: .7; }
+.g-joint { fill: var(--trace); }
+.g-hot { fill: var(--accent); }
+.g-halo { fill: var(--accent); opacity: .22; }
+.g-arrow { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.g-acc { fill: none; stroke: var(--accent); stroke-width: 2.2; stroke-linecap: round; }
+.g-dash { fill: none; stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 2 3; opacity: .7; }
+.g-track { fill: none; stroke: var(--line); stroke-width: 2; }
+.g-txt { font-family: var(--font-mono); font-size: 8px; fill: var(--muted); }
+
+/* movimento */
+.principle { font-family: var(--font-display); font-weight: 500; font-stretch: 92%; font-size: clamp(22px, 2.3vw, 30px); line-height: 1.2; letter-spacing: -0.015em; max-width: 36ch; text-wrap: balance; }
+.curves { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.curve { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 20px; align-items: center; }
+.curve svg { width: 132px; height: 132px; display: block; }
+.curve .cv-grid { fill: none; stroke: var(--line); stroke-width: .8; }
+.curve .cv-h { stroke: var(--faint); stroke-width: .8; }
+.curve .cv-p { fill: var(--faint); }
+.curve .cv-c { fill: none; stroke: var(--accent); stroke-width: 2.6; stroke-linecap: round; }
+.curve .cv-ball { fill: var(--accent); }
+.curve h3 { font-family: var(--font-display); font-size: 22px; font-weight: 600; font-stretch: 90%; letter-spacing: -0.015em; }
+.curve code { font-family: var(--font-mono); font-size: 12px; color: var(--accent-text); display: block; margin-block: 4px 8px; overflow-wrap: anywhere; }
+.curve p { font-size: 14px; color: var(--muted); }
+.tbl-wrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 560px; }
+.tbl th { text-align: left; font-family: var(--font-mono); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); padding: 0 16px 10px 0; }
+.tbl td { padding: 13px 16px 13px 0; border-top: 1px solid var(--line); vertical-align: baseline; }
+.tbl td.m { font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tbl td.dim { color: var(--muted); }
+.tbl tr.cur td:first-child { color: var(--accent-text); }
+
+/* interface */
+.ui-stage { background: var(--stage); color: var(--stage-ink); border-radius: 20px; padding: clamp(16px, 3vw, 32px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; box-shadow: 0 0 0 1px var(--stage-line); }
+.ui-cell { display: grid; gap: 12px; align-content: start; }
+.ui-cell.wide { grid-column: 1 / -1; }
+.ui-cap { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--stage-muted); }
+.ui-well { background: #10131B; border: 1px solid #1C2130; border-radius: 14px; padding: 20px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; min-height: 96px; }
+.hudbar { display: flex; align-items: center; gap: 6px; padding: 5px; border-radius: 999px; background: rgb(21 25 36 / .72); border: 1px solid var(--stage-line); backdrop-filter: blur(16px); flex-wrap: wrap; }
+.hudbar .chip { background: transparent; border-color: transparent; }
+.hudbar .div { width: 1px; height: 16px; background: var(--stage-line); }
+.hudbar .pill { height: 28px; padding: 0 12px; border-radius: 999px; background: #FFB23E; color: #0B0D13; font-family: var(--font-mono); font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; }
+.toast { display: flex; align-items: center; gap: 14px; padding: 12px 18px 12px 12px; border-radius: 16px; background: #151924; border: 1px solid var(--stage-line); }
+.toast svg { width: 40px; height: 40px; flex: none; }
+.toast b { display: block; font-weight: 500; font-size: 14px; }
+.toast span { font-size: 13px; color: var(--stage-muted); }
+.seg { display: inline-grid; grid-auto-flow: column; padding: 4px; border-radius: 999px; background: #151924; border: 1px solid var(--stage-line); }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg label { padding: 7px 14px; border-radius: 999px; font-size: 13px; color: var(--stage-muted); cursor: pointer; transition: background .18s var(--glide), color .18s; white-space: nowrap; }
+.seg input:checked + label { background: #EEF0F6; color: #0B0D13; font-weight: 500; }
+.seg input:focus-visible + label { outline: 2px solid #FFB23E; outline-offset: 2px; }
+.seg-note { font-family: var(--font-mono); font-size: 12px; color: var(--stage-muted); font-variant-numeric: tabular-nums; }
+.drop { width: 100%; border: 1.5px dashed #343B4D; border-radius: 14px; padding: 26px 20px; display: grid; justify-items: center; gap: 8px; text-align: center; }
+.drop .mk { width: 34px; height: 34px; color: #EEF0F6; margin-bottom: 4px; }
+.drop b { font-family: var(--font-display); font-weight: 600; font-stretch: 90%; font-size: 22px; letter-spacing: -0.015em; }
+.drop span { font-size: 13px; color: var(--stage-muted); }
+.annot { position: relative; padding: 18px 8px; font-family: var(--font-display); font-size: clamp(22px, 2.4vw, 30px); font-weight: 600; font-stretch: 88%; letter-spacing: -0.02em; }
+.annot .tgt { position: relative; display: inline-block; }
+.annot svg { position: absolute; left: -8%; top: -34%; width: 118%; height: 168%; overflow: visible; pointer-events: none; }
+.annot path { fill: none; stroke: #FFB23E; stroke-width: 3; stroke-linecap: round; filter: drop-shadow(0 0 6px rgb(255 178 62 / .55)); }
+
+/* aplicações */
+.apps { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr); gap: 16px; align-items: stretch; }
+.icons { display: flex; align-items: flex-end; gap: 14px; flex-wrap: wrap; }
+.icons figure { margin: 0; display: grid; gap: 10px; justify-items: center; }
+.icons svg { display: block; }
+.icons figcaption { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+.og {
+  aspect-ratio: 1200 / 630; max-width: 100%; border-radius: 14px; background: #0B0D13; color: #EEF0F6;
+  container-type: inline-size; position: relative; overflow: hidden; box-shadow: 0 0 0 1px #262C3B;
+  padding: 6cqi 6.5cqi; display: grid; grid-template-rows: auto 1fr auto;
+}
+.og::before { content: ""; position: absolute; inset: 0; background: radial-gradient(45% 60% at 82% 38%, rgb(255 178 62 / .12), transparent 70%); }
+.og > * { position: relative; }
+.og .og-top { display: flex; align-items: center; gap: 1.4cqi; font-size: 3.6cqi; }
+.og .og-top .mk { width: 4.4cqi; height: 4.4cqi; color: #EEF0F6; }
+.og h3 { align-self: end; font-family: var(--font-display); font-weight: 620; font-stretch: 86%; font-size: 8.4cqi; line-height: .92; letter-spacing: -0.035em; max-width: 12ch; }
+.og h3 .soft { color: #8A91A5; }
+.og .og-foot { margin-top: 3cqi; font-family: var(--font-mono); font-size: 1.8cqi; letter-spacing: .08em; text-transform: uppercase; color: #8A91A5; display: flex; justify-content: space-between; }
+.og .trail { position: absolute; right: 5cqi; top: 10cqi; width: 36cqi; height: auto; }
+
+/* tokens */
+.code {
+  position: relative; background: var(--stage); color: #C9CEDB; border-radius: 14px; box-shadow: 0 0 0 1px var(--stage-line);
+}
+.code pre { margin: 0; padding: 24px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.7; }
+.code .c { color: #5A6175; }
+.code .p { color: #7CD4EA; }
+.code .v { color: #FFB23E; }
+.copy {
+  position: absolute; top: 12px; right: 12px; font: 500 12px var(--font-mono); color: #EEF0F6; background: #151924;
+  border: 1px solid #262C3B; border-radius: 999px; padding: 6px 12px; cursor: pointer;
+}
+.copy:hover { border-color: #8A91A5; }
+.files { display: flex; flex-wrap: wrap; gap: 8px; }
+
+footer { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-block: 40px 56px; border-top: 1px solid var(--line-soft); color: var(--muted); font-size: 13px; }
+footer .brand { font-size: 20px; color: var(--ink); }
+
+/* responsive */
+@media (max-width: 1080px) {
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .lede { max-width: 58ch; }
+  .sec { grid-template-columns: minmax(0, 1fr); }
+  .sec-head { position: static; }
+  .sec-head p { max-width: 58ch; }
+  .gestures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .apps { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 780px) {
+  .top .ver { display: none; }
+  .pillars, .lockups, .states { grid-template-columns: minmax(0, 1fr); }
+  .logo-hero, .primary-sw, .curves, .ui-stage { grid-template-columns: minmax(0, 1fr); }
+  .sw-grid, .donts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ratio-legend { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .spm { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .scale-row { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .scale-row .sp { text-align: left; }
+}
+@media (max-width: 560px) {
+  .gestures { grid-template-columns: minmax(0, 1fr); }
+  .curve { grid-template-columns: 96px minmax(0, 1fr); }
+  .curve svg { width: 96px; height: 96px; }
+  .voice { font-size: 14px; }
+  .brand .wm { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="mark" viewBox="0 0 48 48">
+      <path d="M28 12H11a6 6 0 0 0-6 6v15a6 6 0 0 0 6 6h24a6 6 0 0 0 6-6v-8" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="41" cy="12" r="4.25" style="fill: var(--dot, #FFB23E)"/>
+    </symbol>
+    <symbol id="mark-closed" viewBox="0 0 48 48">
+      <rect x="5" y="12" width="36" height="27" rx="6" fill="none" stroke="currentColor" stroke-width="4"/>
+      <circle cx="41" cy="12" r="4.25" fill="#FFB23E"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#inicio" aria-label="Air-Deck, início">
+      <svg class="mk" viewBox="0 0 48 48"><use href="#mark"/></svg>
+      <span class="wm">a<span class="wm-i">ı</span>rdeck</span>
+    </a>
+    <nav class="nav" aria-label="Seções">
+      <a href="#essencia">Essência</a>
+      <a href="#logo">Símbolo</a>
+      <a href="#cor">Cor</a>
+      <a href="#tipografia">Tipografia</a>
+      <a href="#gestos">Gestos</a>
+      <a href="#movimento">Movimento</a>
+      <a href="#interface">Interface</a>
+      <a href="#aplicacoes">Aplicações</a>
+      <a href="#tokens">Tokens</a>
+    </nav>
+    <span class="label ver">Kit de marca v1.0</span>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="inicio">
+  <div class="hero-copy">
+    <span class="label">Air-Deck · identidade visual</span>
+    <h1 class="display">Sem mouse, sem passador. <span class="soft">Só o ar</span><span class="pt">.</span></h1>
+    <p class="lede">Air-Deck transforma qualquer PDF em apresentação controlada por gestos. A câmera lê sua mão, o navegador faz o resto — <strong>o arquivo nunca sai do seu computador.</strong></p>
+    <div class="facts">
+      <span class="fact">React + TypeScript</span>
+      <span class="fact">MediaPipe Hand Landmarker</span>
+      <span class="fact">pdf.js</span>
+      <span class="fact">Vercel</span>
+    </div>
+  </div>
+
+  <div class="stage-wrap">
+    <div class="stage" id="stage">
+      <div class="hud-row">
+        <span class="chip" id="track-chip" data-state="ok"><i></i><span id="track-text">Mão detectada</span></span>
+        <div class="hud-group">
+          <span class="chip dim">Zoom 1,0×</span>
+          <span class="chip">07 / 24</span>
+        </div>
+      </div>
+      <div class="slide" aria-label="Slide de exemplo: Fotossíntese">
+        <div class="s-eyebrow">Biologia · Aula 07</div>
+        <h3>Fotossíntese</h3>
+        <p class="s-eq">6 CO₂ + 6 H₂O + luz → <b data-circle>C₆H₁₂O₆</b> + 6 O₂</p>
+        <div class="s-cols">
+          <div><strong><span data-circle>Clorofila</span></strong>Absorve luz azul e vermelha nos cloroplastos.</div>
+          <div><strong>Fase clara</strong>Quebra a água e libera oxigênio.</div>
+          <div><strong><span data-circle>Ciclo de Calvin</span></strong>Fixa o CO₂ e produz glicose.</div>
+        </div>
+      </div>
+      <div class="ctrl">
+        <label for="smooth">Suavização</label>
+        <div class="range-row">
+          <span class="end">Responsivo</span>
+          <input type="range" id="smooth" min="0" max="100" value="50" aria-describedby="smooth-readout">
+          <span class="end">Estável</span>
+        </div>
+        <span class="readout" id="smooth-readout">Equilibrado <span>· 1,02 Hz · β 0,012</span></span>
+      </div>
+      <canvas id="laser" aria-hidden="true"></canvas>
+    </div>
+    <div class="caption">
+      <span>Passe o cursor pelo palco. Clique e arraste para circular. O ruído imita o tremor da webcam.</span>
+      <span class="legend"><span><i class="raw"></i>câmera</span><span><i class="flt"></i>laser filtrado</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- 1 Essência -->
+<section class="sec" id="essencia">
+  <div class="sec-head">
+    <span class="label">1 · Essência</span>
+    <h2>O slide acompanha a mão.</h2>
+    <p>Quem apresenta de pé não deveria voltar ao notebook. A marca existe para sumir na hora certa.</p>
+  </div>
+  <div class="sec-body">
+    <p class="statement">Para professores e palestrantes, Air-Deck é o passador que não existe: <em>você fala, gesticula, e a apresentação responde.</em></p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <h3>Calmo</h3>
+        <p>A interface recua quando a apresentação começa. Nada pisca, nada disputa a atenção que é da plateia.</p>
+      </div>
+      <div class="pillar">
+        <h3>Preciso</h3>
+        <p>Cada gesto tem um único significado. Na dúvida, o sistema espera — nunca troca um slide por palpite.</p>
+      </div>
+      <div class="pillar">
+        <h3>Privado</h3>
+        <p>PDF e câmera ficam no navegador. Sem upload, sem conta, sem servidor. Isso é produto, não rodapé.</p>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h3 class="label">Tom de voz</h3>
+      <table class="voice">
+        <thead><tr><th class="label say">Diga</th><th class="label avoid">Evite</th></tr></thead>
+        <tbody>
+          <tr><td>Mão detectada</td><td>Landmarks inicializados com sucesso</td></tr>
+          <tr><td>Levante a mão aberta para começar</td><td>Nenhum input de gesto encontrado</td></tr>
+          <tr><td>Seu PDF não sai deste computador</td><td>Processamento 100% client-side via WASM</td></tr>
+          <tr><td>Abra a mão para avançar</td><td>Execute o gesto de abertura palmar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 2 Símbolo -->
+<section class="sec" id="logo">
+  <div class="sec-head">
+    <span class="label">2 · Símbolo</span>
+    <h2>Um slide aberto por um ponto de luz.</h2>
+    <p>O quadro é o slide. O canto que falta é onde a mão sai do teclado. O ponto é o laser — e a única cor quente da marca.</p>
+  </div>
+  <div class="sec-body">
+    <div class="logo-hero">
+      <div class="dark-panel construct">
+        <svg viewBox="-4 -1 58 50" id="construct" role="img" aria-label="Construção do símbolo em grade de 48 unidades">
+          <g class="grid" id="grid"></g>
+          <circle class="k" cx="41" cy="12" r="11"/>
+          <circle class="k" cx="11" cy="18" r="6"/>
+          <circle class="k" cx="35" cy="33" r="6"/>
+          <line class="k" x1="41" y1="12" x2="41" y2="1"/>
+          <path d="M28 12H11a6 6 0 0 0-6 6v15a6 6 0 0 0 6 6h24a6 6 0 0 0 6-6v-8" fill="none" stroke="#EEF0F6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="41" cy="12" r="4.25" fill="#FFB23E"/>
+          <text class="kt" x="45.5" y="26">r 11</text>
+          <text class="kt" x="12" y="28">r 6</text>
+          <text class="kt" x="0" y="47">48 u</text>
+        </svg>
+      </div>
+      <div class="panel specs">
+        <div class="spec"><span class="v mono">4 u</span><p>Traço do quadro, pontas arredondadas.</p></div>
+        <div class="spec"><span class="v mono">r 6</span><p>Raio dos cantos: o mesmo do slide na interface.</p></div>
+        <div class="spec"><span class="v mono">Ø 8,5</span><p>Ponto Holofote, centrado no canto ausente.</p></div>
+        <div class="spec"><span class="v mono">r 11</span><p>Círculo de folga: as duas pontas do traço tocam nele.</p></div>
+        <div class="spec"><span class="v mono">4 : 3</span><p>Proporção do quadro. Legível a partir de 16 px.</p></div>
+        <div class="spec"><span class="v mono">1 ponto</span><p>Área de proteção mínima em volta de toda a marca.</p></div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h3 class="label">Assinaturas</h3>
+      <div class="lockups">
+        <div class="lockup-tile">
+          <div class="lockup lk-dark"><svg class="mk" viewBox="0 0 48 48"><use href="#mark"/></svg><span class="wm">a<span class="wm-i">ı</span>rdeck</span></div>
+          <div class="tile-cap"><span>Principal</span><span class="mono">Halo sobre Blecaute</span></div>
+        </div>
+        <div class="lockup-tile">
+          <div class="lockup lk-light"><svg class="mk" viewBox="0 0 48 48"><use href="#mark"/></svg><span class="wm">a<span class="wm-i">ı</span>rdeck</span></div>
+          <div class="tile-cap"><span>Fundo claro</span><span class="mono">Blecaute sobre Halo</span></div>
+        </div>
+        <div class="lockup-tile">
+          <div class="lockup lk-amber"><svg class="mk" viewBox="0 0 48 48"><use href="#mark"/></svg></div>
+          <div class="tile-cap"><span>Símbolo sobre Holofote</span><span class="mono">ponto em Blecaute</span></div>
+        </div>
+      </div>
+      <p class="note">O logotipo é escrito <strong>airdeck</strong>, em minúsculas, com o pingo do i trocado pelo ponto Holofote. No texto corrido, o nome é sempre <strong>Air-Deck</strong>.</p>
+    </div>
+
+    <div class="sub">
+      <h3 class="label">Tamanho mínimo</h3>
+      <div class="sizes">
+        <figure><svg class="mk" width="48" height="48" viewBox="0 0 48 48"><use href="#mark"/></svg><figcaption>48 px</figcaption></figure>
+        <figure><svg class="mk" width="32" height="32" viewBox="0 0 48 48"><use href="#mark"/></svg><figcaption>32 px</figcaption></figure>
+        <figure><svg class="mk" width="16" height="16" viewBox="0 0 48 48"><use href="#mark"/></svg><figcaption>16 px mín.</figcaption></figure>
+        <figure><span class="row-lock"><svg class="mk" viewBox="0 0 48 48"><use href="#mark"/></svg><span class="wm">a<span class="wm-i">ı</span>rdeck</span></span><figcaption>assinatura · 96 px de largura mín.</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h3 class="label">Não faça</h3>
+      <div class="donts">
+        <div class="dont"><div class="box"><svg viewBox="0 0 48 48" style="transform: rotate(-20deg)"><use href="#mark"/></svg></div><p>Girar o símbolo</p></div>
+        <div class="dont"><div class="box"><svg viewBox="0 0 48 48"><use href="#mark-closed"/></svg></div><p>Fechar o quadro</p></div>
+        <div class="dont"><div class="box"><svg viewBox="0 0 48 48" style="--dot: #7CD4EA"><use href="#mark"/></svg></div><p>Trocar a cor do ponto</p></div>
+        <div class="dont"><div class="box"><svg viewBox="0 0 48 48" style="transform: scaleX(1.4)"><use href="#mark"/></svg></div><p>Distorcer a proporção</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 Cor -->
+<section class="sec" id="cor">
+  <div class="sec-head">
+    <span class="label">3 · Cor</span>
+    <h2>Palco apagado, um holofote aceso.</h2>
+    <p>A paleta vem da sala de apresentação: luz baixa, superfícies frias e um único ponto quente para onde todos olham.</p>
+  </div>
+  <div class="sec-body">
+    <div class="primary-sw">
+      <div class="sw" data-hex="#0B0D13">
+        <div class="chipc" style="background:#0B0D13;color:#EEF0F6"><span class="nm">Blecaute</span><span class="hx">#0B0D13 · RGB 11 13 19</span></div>
+        <div class="meta"><span class="role">O palco. Fundo do modo apresentação e de toda peça principal.</span><div class="cr"></div></div>
+      </div>
+      <div class="sw" data-hex="#FFB23E">
+        <div class="chipc" style="background:#FFB23E;color:#0B0D13"><span class="nm">Holofote</span><span class="hx">#FFB23E · RGB 255 178 62</span></div>
+        <div class="meta"><span class="role">Ponteiro, anotação e foco. Nunca como texto sobre fundo claro.</span><div class="cr"></div></div>
+      </div>
+    </div>
+    <div class="sw-grid">
+      <div class="sw" data-hex="#151924">
+        <div class="chipc" style="background:#151924;color:#EEF0F6"><span class="nm">Palco</span><span class="hx">#151924</span></div>
+        <div class="meta"><span class="role">HUD, painéis, superfícies elevadas.</span><div class="cr"></div></div>
+      </div>
+      <div class="sw" data-hex="#8A91A5">
+        <div class="chipc" style="background:#8A91A5;color:#0B0D13"><span class="nm">Ardósia</span><span class="hx">#8A91A5</span></div>
+        <div class="meta"><span class="role">Texto secundário e rótulos.</span><div class="cr"></div></div>
+      </div>
+      <div class="sw" data-hex="#EEF0F6">
+        <div class="chipc" style="background:#EEF0F6;color:#0B0D13"><span class="nm">Halo</span><span class="hx">#EEF0F6</span></div>
+        <div class="meta"><span class="role">Texto principal e fundo claro.</span><div class="cr"></div></div>
+      </div>
+      <div class="sw" data-hex="#7CD4EA">
+        <div class="chipc" style="background:#7CD4EA;color:#0B0D13"><span class="nm">Rastro</span><span class="hx">#7CD4EA</span></div>
+        <div class="meta"><span class="role">A mão: landmarks e rastreamento.</span><div class="cr"></div></div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h3 class="label">Proporção de uso</h3>
+      <div class="ratio-bar" role="img" aria-label="Blecaute 64%, Palco 18%, Halo 10%, Ardósia 5%, Rastro 2%, Holofote 1%">
+        <div style="flex:64;background:#0B0D13"></div>
+        <div style="flex:18;background:#151924"></div>
+        <div style="flex:10;background:#EEF0F6"></div>
+        <div style="flex:5;background:#8A91A5"></div>
+        <div style="flex:2;background:#7CD4EA"></div>
+        <div style="flex:1;background:#FFB23E"></div>
+      </div>
+      <div class="ratio-legend">
+        <div>Blecaute<b>64%</b></div><div>Palco<b>18%</b></div><div>Halo<b>10%</b></div>
+        <div>Ardósia<b>5%</b></div><div>Rastro<b>2%</b></div><div>Holofote<b>1%</b></div>
+      </div>
+      <p class="note"><strong>Holofote é raro de propósito.</strong> Se tudo brilha, nada aponta. Numa tela, ele marca uma coisa só: o laser, o traço de anotação ou a ação principal.</p>
+    </div>
+
+    <div class="sub">
+      <h3 class="label">Estados de rastreamento</h3>
+      <div class="states">
+        <div class="state"><span class="dot"><i style="background:#52D6A0"></i>Rastreando</span><p class="mono">#52D6A0 · mão estável, gestos ativos</p></div>
+        <div class="state"><span class="dot"><i style="background:#8A91A5"></i>Procurando</span><p class="mono">#8A91A5 · pulsa a cada 1,2 s</p></div>
+        <div class="state"><span class="dot"><i style="background:#F0677B"></i>Mão perdida</span><p class="mono">#F0677B · gestos pausados</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 Tipografia -->
+<section class="sec" id="tipografia">
+  <div class="sec-head">
+    <span class="label">4 · Tipografia</span>
+    <h2>Três vozes, papéis fixos.</h2>
+    <p>Display com personalidade para o que se lê de longe, Geist para interface, Geist Mono para tudo que é número e medida.</p>
+  </div>
+  <div class="sec-body">
+    <div class="specimens">
+      <div class="spm">
+        <div class="who"><span class="label">Display</span><span class="fam">Bricolage Grotesque</span><p>600–650 · largura 86–88% · tracking −3,5%</p></div>
+        <div><div class="aa f-display">Aa</div><p class="say f-display" style="font-size:clamp(26px,3vw,40px);line-height:1.05;letter-spacing:-.025em;margin-top:12px">Próximo slide, sem tocar em nada.</p></div>
+      </div>
+      <div class="spm">
+        <div class="who"><span class="label">Texto e interface</span><span class="fam">Geist</span><p>400 · 500 · 600</p></div>
+        <div><div class="aa f-body" style="font-weight:500;letter-spacing:-.03em">Aa</div><p class="say f-body" style="font-size:19px;margin-top:12px;max-width:52ch">O navegador lê 21 pontos da sua mão, quadro a quadro, e decide se ela abriu, fechou ou só tremeu.</p></div>
+      </div>
+      <div class="spm">
+        <div class="who"><span class="label">Dados e HUD</span><span class="fam">Geist Mono</span><p>400 · 500 · números tabulares</p></div>
+        <div><div class="aa f-mono" style="letter-spacing:-.06em">07</div><p class="say f-mono" style="font-size:15px;margin-top:12px;color:var(--muted)">07 / 24 · ZOOM 1,4× · minCutoff 1,0 Hz · β 0,012</p></div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h3 class="label">Escala</h3>
+      <div class="scale">
+        <div class="scale-row"><span class="tk">text-display</span><span class="smp f-display" style="font-size:clamp(34px,4.4vw,56px);line-height:.95;letter-spacing:-.035em">Só o ar.</span><span class="sp">44–88 / 0,92</span></div>
+        <div class="scale-row"><span class="tk">text-h1</span><span class="smp f-display" style="font-size:clamp(30px,3.4vw,44px);line-height:1;letter-spacing:-.03em">Fotossíntese</span><span class="sp">56 / 1,0</span></div>
+        <div class="scale-row"><span class="tk">text-h2</span><span class="smp f-display" style="font-size:30px;line-height:1.05;letter-spacing:-.02em">Estabilidade da mão</span><span class="sp">36 / 1,05</span></div>
+        <div class="scale-row"><span class="tk">text-h3</span><span class="smp" style="font-size:20px;font-weight:600;letter-spacing:-.01em">Calibração automática</span><span class="sp">20 / 1,3</span></div>
+        <div class="scale-row"><span class="tk">text-body</span><span class="smp" style="font-size:16px">Mantenha a mão parada por cinco segundos.</span><span class="sp">16 / 1,6</span></div>
+        <div class="scale-row"><span class="tk">text-small</span><span class="smp" style="font-size:14px;color:var(--muted)">O arquivo não sai deste computador.</span><span class="sp">14 / 1,5</span></div>
+        <div class="scale-row"><span class="tk">text-label</span><span class="smp label">Suavização · Equilibrado</span><span class="sp">12 / 1,2 · +8%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 Gestos -->
+<section class="sec" id="gestos">
+  <div class="sec-head">
+    <span class="label">5 · Gestos</span>
+    <h2>Pontos e conexões, nunca mãos desenhadas.</h2>
+    <p>A iconografia usa a mesma lógica do Hand Landmarker. Rastro desenha a mão; Holofote marca o que ela produz.</p>
+  </div>
+  <div class="sec-body">
+    <div class="gestures" id="gestures"></div>
+  </div>
+</section>
+
+<!-- 6 Movimento -->
+<section class="sec" id="movimento">
+  <div class="sec-head">
+    <span class="label">6 · Movimento</span>
+    <h2>Movimento confirma, nunca enfeita.</h2>
+    <p>O que a plateia vê anda em curvas suaves. O que só quem apresenta vê responde na hora.</p>
+  </div>
+  <div class="sec-body">
+    <div class="curves">
+      <div class="panel curve">
+        <svg viewBox="-8 -8 116 116" data-bezier=".22,1,.36,1" aria-hidden="true"></svg>
+        <div><h3>Deslize</h3><code>cubic-bezier(.22, 1, .36, 1)</code><p>Troca de slide, zoom, entrada do HUD. Sai rápido, pousa devagar.</p></div>
+      </div>
+      <div class="panel curve">
+        <svg viewBox="-8 -8 116 116" data-bezier=".65,0,.35,1" aria-hidden="true"></svg>
+        <div><h3>Traço</h3><code>cubic-bezier(.65, 0, .35, 1)</code><p>Círculo de anotação e anel de reset. Acelera e freia como um pulso.</p></div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h3 class="label">Durações</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Token</th><th>Valor</th><th>Onde</th></tr></thead>
+          <tbody>
+            <tr><td class="m">dur-instant</td><td class="m">90 ms</td><td class="dim">Feedback do ponteiro, hover</td></tr>
+            <tr><td class="m">dur-quick</td><td class="m">180 ms</td><td class="dim">Chips de estado, HUD</td></tr>
+            <tr><td class="m">dur-slide</td><td class="m">420 ms</td><td class="dim">Troca de slide: desliza 6% e esmaece</td></tr>
+            <tr><td class="m">dur-draw</td><td class="m">600 ms</td><td class="dim">Círculo de anotação aparece</td></tr>
+            <tr><td class="m">annotation-hold</td><td class="m">1 600 ms</td><td class="dim">Anotação fica na tela antes de sumir</td></tr>
+            <tr><td class="m">spring-zoom</td><td class="m">220 · 28 · 0,9</td><td class="dim">Framer Motion: stiffness, damping, mass</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h3 class="label">Estabilidade · One Euro Filter</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Preset</th><th>minCutoff</th><th>beta</th><th>Zona morta</th><th>Para quem</th></tr></thead>
+          <tbody>
+            <tr><td>Responsivo</td><td class="m">3,00 Hz</td><td class="m">0,050</td><td class="m">0,4%</td><td class="dim">Mão firme, boa luz</td></tr>
+            <tr class="cur"><td>Equilibrado</td><td class="m">1,00 Hz</td><td class="m">0,012</td><td class="m">0,8%</td><td class="dim">Padrão</td></tr>
+            <tr><td>Estável</td><td class="m">0,35 Hz</td><td class="m">0,003</td><td class="m">1,5%</td><td class="dim">Webcam fraca, sala escura</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">A <strong>calibração automática</strong> mede o tremor por 5 s com a mão parada e sugere o preset. A escolha fica salva no navegador.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 Interface -->
+<section class="sec" id="interface">
+  <div class="sec-head">
+    <span class="label">7 · Interface</span>
+    <h2>Cápsulas sobre o palco.</h2>
+    <p>O HUD flutua em Palco translúcido com desfoque de 16 px, raio total e Geist Mono. Some depois de 3 s sem uso.</p>
+  </div>
+  <div class="sec-body">
+    <div class="ui-stage">
+      <div class="ui-cell wide">
+        <span class="ui-cap">Barra de apresentação</span>
+        <div class="ui-well">
+          <div class="hudbar">
+            <span class="chip" data-state="ok"><i></i>Mão detectada</span>
+            <span class="div"></span>
+            <span class="chip">07 / 24</span>
+            <span class="chip">Zoom 1,4×</span>
+            <span class="pill">Laser</span>
+          </div>
+        </div>
+      </div>
+      <div class="ui-cell">
+        <span class="ui-cap">Estados</span>
+        <div class="ui-well">
+          <span class="chip" data-state="ok"><i></i>Rastreando</span>
+          <span class="chip" data-state="search"><i></i>Procurando mão</span>
+          <span class="chip" data-state="lost"><i></i>Mão perdida</span>
+        </div>
+      </div>
+      <div class="ui-cell">
+        <span class="ui-cap">Calibração</span>
+        <div class="ui-well">
+          <div class="toast">
+            <svg viewBox="0 0 40 40" aria-hidden="true">
+              <circle cx="20" cy="20" r="16" fill="none" stroke="#262C3B" stroke-width="3"/>
+              <circle cx="20" cy="20" r="16" fill="none" stroke="#FFB23E" stroke-width="3" stroke-linecap="round" pathLength="100" stroke-dasharray="40 100" transform="rotate(-90 20 20)"/>
+              <text x="20" y="24" text-anchor="middle" fill="#EEF0F6" style="font: 500 11px var(--font-mono)">3 s</text>
+            </svg>
+            <div><b>Calibrando estabilidade</b><span>Mantenha a mão aberta e parada</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="ui-cell">
+        <span class="ui-cap">Suavização</span>
+        <div class="ui-well" style="flex-direction:column;align-items:flex-start">
+          <div class="seg" role="radiogroup" aria-label="Preset de suavização">
+            <input type="radio" name="preset" id="p-resp" value="resp"><label for="p-resp">Responsivo</label>
+            <input type="radio" name="preset" id="p-eq" value="eq" checked><label for="p-eq">Equilibrado</label>
+            <input type="radio" name="preset" id="p-est" value="est"><label for="p-est">Estável</label>
+          </div>
+          <span class="seg-note" id="seg-note">minCutoff 1,00 Hz · β 0,012 · zona morta 0,8%</span>
+        </div>
+      </div>
+      <div class="ui-cell">
+        <span class="ui-cap">Anotação</span>
+        <div class="ui-well" style="justify-content:center">
+          <p class="annot">A resposta é <span class="tgt">glicose<svg viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><path d="M22 10 C 55 1, 94 8, 96 30 C 98 52, 55 58, 28 54 C 6 50, 1 34, 8 22 C 13 14, 28 8, 44 7"/></svg></span></p>
+        </div>
+      </div>
+      <div class="ui-cell wide">
+        <span class="ui-cap">Início</span>
+        <div class="drop">
+          <svg class="mk" viewBox="0 0 48 48"><use href="#mark"/></svg>
+          <b>Solte o PDF aqui</b>
+          <span>Ou escolha um arquivo. Ele não sai deste computador.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 Aplicações -->
+<section class="sec" id="aplicacoes">
+  <div class="sec-head">
+    <span class="label">8 · Aplicações</span>
+    <h2>Ícone e compartilhamento.</h2>
+    <p>O símbolo sempre sobre Blecaute no ícone. A imagem de compartilhamento repete a frase da marca e o ponto final aceso.</p>
+  </div>
+  <div class="sec-body">
+    <div class="apps">
+      <div class="panel" style="display:grid;gap:20px;align-content:space-between">
+        <span class="label">Ícone do app · favicon</span>
+        <div class="icons" id="icons"></div>
+      </div>
+      <div style="display:grid;gap:10px">
+        <div class="og">
+          <div class="og-top"><svg class="mk" viewBox="0 0 48 48"><use href="#mark"/></svg><span class="wm">a<span class="wm-i">ı</span>rdeck</span></div>
+          <h3>Sem mouse, sem passador. <span class="soft">Só o ar</span><span class="pt">.</span></h3>
+          <div class="og-foot"><span>Apresentações por gesto</span><span>Direto no navegador</span></div>
+          <svg class="trail" viewBox="0 0 360 200" aria-hidden="true">
+            <defs><linearGradient id="tr" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FFB23E" stop-opacity="0"/><stop offset="1" stop-color="#FFB23E" stop-opacity=".9"/></linearGradient>
+            <radialGradient id="gl"><stop offset="0" stop-color="#FFE7C2"/><stop offset=".25" stop-color="#FFB23E" stop-opacity=".6"/><stop offset="1" stop-color="#FFB23E" stop-opacity="0"/></radialGradient></defs>
+            <path d="M10 190 C 90 170, 140 60, 300 44" fill="none" stroke="url(#tr)" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="300" cy="44" r="40" fill="url(#gl)"/>
+            <circle cx="300" cy="44" r="6" fill="#FFF4E0"/>
+          </svg>
+        </div>
+        <div class="tile-cap"><span>Open Graph</span><span class="mono">1200 × 630</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 Tokens -->
+<section class="sec" id="tokens">
+  <div class="sec-head">
+    <span class="label">9 · Tokens</span>
+    <h2>Pronto para o código.</h2>
+    <p>Os mesmos valores deste kit, como variáveis CSS. Os arquivos estão na pasta <span class="mono">brand/</span> do repositório.</p>
+  </div>
+  <div class="sec-body">
+    <div class="code">
+      <button class="copy" id="copy" type="button">Copiar</button>
+<pre id="code"><span class="c">/* Air-Deck · tokens v1.0 */</span>
+:root {
+  <span class="p">--ad-blecaute</span>: <span class="v">#0B0D13</span>;
+  <span class="p">--ad-palco</span>: <span class="v">#151924</span>;
+  <span class="p">--ad-trelica</span>: <span class="v">#262C3B</span>;
+  <span class="p">--ad-ardosia</span>: <span class="v">#8A91A5</span>;
+  <span class="p">--ad-halo</span>: <span class="v">#EEF0F6</span>;
+  <span class="p">--ad-holofote</span>: <span class="v">#FFB23E</span>;
+  <span class="p">--ad-rastro</span>: <span class="v">#7CD4EA</span>;
+
+  <span class="p">--ad-font-display</span>: <span class="v">"Bricolage Grotesque"</span>, sans-serif;
+  <span class="p">--ad-font-body</span>: <span class="v">"Geist"</span>, system-ui, sans-serif;
+  <span class="p">--ad-font-mono</span>: <span class="v">"Geist Mono"</span>, ui-monospace, monospace;
+
+  <span class="p">--ad-radius-stage</span>: <span class="v">20px</span>;
+  <span class="p">--ad-radius-pill</span>: <span class="v">999px</span>;
+  <span class="p">--ad-ease-glide</span>: <span class="v">cubic-bezier(0.22, 1, 0.36, 1)</span>;
+  <span class="p">--ad-ease-draw</span>: <span class="v">cubic-bezier(0.65, 0, 0.35, 1)</span>;
+  <span class="p">--ad-dur-slide</span>: <span class="v">420ms</span>;
+  <span class="p">--ad-dur-draw</span>: <span class="v">600ms</span>;
+  <span class="p">--ad-gesture-cooldown</span>: <span class="v">650ms</span>;
+  <span class="p">--ad-reset-hold</span>: <span class="v">1000ms</span>;
+}</pre>
+    </div>
+    <div class="files">
+      <span class="fact">brand/tokens.css</span>
+      <span class="fact">brand/mark.svg</span>
+      <span class="fact">brand/mark-ink.svg</span>
+      <span class="fact">brand/app-icon.svg</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <a class="brand" href="#inicio"><svg class="mk" viewBox="0 0 48 48" style="width:22px;height:22px"><use href="#mark"/></svg><span class="wm">a<span class="wm-i">ı</span>rdeck</span></a>
+  <span>Kit de marca v1.0 · setembro de 2026</span>
+</footer>
+
+</div>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fmt = (n, d) => n.toFixed(d).replace('.', ',');
+
+  /* ---------- contraste ---------- */
+  const lum = hex => {
+    const n = parseInt(hex.slice(1), 16);
+    return [n >> 16, (n >> 8) & 255, n & 255]
+      .map(v => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); })
+      .reduce((a, v, i) => a + v * [.2126, .7152, .0722][i], 0);
+  };
+  const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
+  const grade = r => r >= 7 ? 'AAA' : r >= 4.5 ? 'AA' : r >= 3 ? 'AA grande' : '—';
+  document.querySelectorAll('.sw').forEach(sw => {
+    const hex = sw.dataset.hex, out = sw.querySelector('.cr');
+    [['#0B0D13', 'Blecaute'], ['#EEF0F6', 'Halo']].forEach(([bg, name]) => {
+      if (bg === hex) return;
+      const r = ratio(hex, bg), s = document.createElement('span');
+      if (r < 3) s.className = 'fail';
+      s.innerHTML = `<b>${grade(r)}</b> ${fmt(r, 1)}:1 com ${name}`;
+      out.appendChild(s);
+    });
+  });
+
+  /* ---------- grade de construção ---------- */
+  const grid = document.getElementById('grid');
+  let g = '';
+  for (let i = 0; i <= 48; i += 4) g += `<line x1="${i}" y1="0" x2="${i}" y2="48"/><line x1="0" y1="${i}" x2="48" y2="${i}"/>`;
+  grid.innerHTML = g;
+
+  /* ---------- glifos de gesto ---------- */
+  const B = { wrist: [32, 54], thumb: [24, 46], index: [26, 33], middle: [31.5, 31], ring: [37, 32.5], pinky: [42, 36] };
+  const OPEN = { thumb: [11, 35], index: [20, 11], middle: [32, 7], ring: [43.5, 10], pinky: [53, 20] };
+  const SHUT = { thumb: [31, 41], index: [27, 26.5], middle: [32, 24.5], ring: [37.5, 26], pinky: [43.5, 30.5] };
+  const FINGERS = ['thumb', 'index', 'middle', 'ring', 'pinky'];
+  const lerp = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+  const all = s => Object.fromEntries(FINGERS.map(f => [f, s]));
+  function hand(pose, { x = 0, y = 0, s = 1, hi = [] } = {}) {
+    const L = (a, b) => `<line class="g-bone" x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}"/>`;
+    const D = (p, r, c = 'g-joint') => `<circle class="${c}" cx="${p[0]}" cy="${p[1]}" r="${r}"/>`;
+    let bones = L(B.wrist, B.thumb) + L(B.wrist, B.index) + L(B.wrist, B.pinky) + L(B.index, B.middle) + L(B.middle, B.ring) + L(B.ring, B.pinky);
+    let dots = D(B.wrist, 1.9), tips = '';
+    FINGERS.forEach(f => {
+      const p = pose[f], b = B[f];
+      const t = Array.isArray(p) ? p : (p === 'open' ? OPEN[f] : SHUT[f]);
+      bones += L(b, t);
+      dots += D(b, 1.5) + D(lerp(b, t, .45), 1.25) + D(lerp(b, t, .74), 1.25);
+      if (hi.includes(f)) tips += D(t, 6, 'g-halo') + D(t, 2.6, 'g-hot');
+      else dots += D(t, 1.9);
+    });
+    return `<g transform="translate(${x} ${y}) scale(${s})">${bones}${dots}${tips}</g>`;
+  }
+  const arrow = (x1, x2, y = 32) => `<path class="g-arrow" d="M${x1} ${y}H${x2}m-5 -5 5 5 -5 5"/>`;
+  const wobblyEllipse = (cx, cy, rx, ry, turns = 1.08, start = -2.6) => {
+    let d = '';
+    for (let i = 0; i <= 64; i++) {
+      const th = start + (i / 64) * Math.PI * 2 * turns;
+      const k = 1 + .045 * Math.sin(3 * th + .8);
+      d += (i ? 'L' : 'M') + (cx + rx * k * Math.cos(th)).toFixed(1) + ' ' + (cy + ry * k * Math.sin(th)).toFixed(1);
+    }
+    return d;
+  };
+  const point = { ...all('shut'), index: 'open' };
+  const pinch = { ...all('shut'), thumb: [22.5, 20], index: [21.5, 18.5] };
+
+  const gestures = [
+    { name: 'Avançar', act: 'Mão fechada → aberta', spec: 'confirma em 3 quadros · intervalo 650 ms',
+      svg: hand(all('shut'), { x: 11, y: 0 }) + arrow(74, 98) + hand(all('open'), { x: 100, y: 0 }) },
+    { name: 'Voltar', act: 'Mão aberta → fechada', spec: 'confirma em 3 quadros · intervalo 650 ms',
+      svg: hand(all('open'), { x: 8, y: 0 }) + arrow(74, 98) + hand(all('shut'), { x: 99, y: 0 }) },
+    { name: 'Zoom', act: 'Faça um V e suba ou desça a mão', spec: 'relativo ao início · 1,0× a 3,0× · spring 220/28',
+      svg: hand({ ...all('shut'), index: 'open', middle: 'open' }, { x: 26, y: 0, hi: ['index', 'middle'] }) +
+        `<line class="g-track" x1="136" y1="8" x2="136" y2="58"/><path class="g-acc" d="M136 58V22"/>` +
+        `<path class="g-dash" d="M60 22H128"/><circle class="g-hot" cx="136" cy="22" r="3.4"/>` +
+        `<text class="g-txt" x="146" y="12">3×</text><text class="g-txt" x="146" y="60">1×</text>` },
+    { name: 'Reset de zoom', act: 'Palma parada por 1 s, ou duas mãos abertas', spec: 'anel de 1 000 ms · volta a 1,0×',
+      svg: `<circle class="g-track" cx="36" cy="32" r="29"/><circle class="g-acc" cx="36" cy="32" r="29" pathLength="100" stroke-dasharray="72 100" transform="rotate(-90 36 32)"/>` +
+        hand(all('open'), { x: 11, y: 4, s: .78 }) +
+        `<text class="g-txt" x="84" y="35">ou</text>` +
+        hand(all('open'), { x: 100, y: 12, s: .62 }) + hand(all('open'), { x: 136, y: 12, s: .62 }) },
+    { name: 'Laser', act: 'Ponta do indicador vira ponteiro na tela', spec: 'landmark 8 · One Euro Filter · zona morta',
+      svg: hand(point, { x: 6, y: 1, hi: ['index'] }) +
+        `<path class="g-dash" d="M34 14 C 70 6, 110 10, 150 28"/><circle class="g-halo" cx="150" cy="28" r="11"/><circle class="g-hot" cx="150" cy="28" r="3.6"/>` },
+    { name: 'Circular', act: 'Pinça e desenhe para marcar uma área', spec: 'polegar 4 + indicador 8 juntos · some em 1,6 s',
+      svg: hand(pinch, { x: 4, y: 2, hi: ['index'] }) +
+        `<path class="g-dash" d="M34 22 C 56 16, 70 16, 88 22"/><path class="g-acc" d="${wobblyEllipse(126, 32, 36, 21)}"/>` }
+  ];
+  document.getElementById('gestures').innerHTML = gestures.map(gs => `
+    <article class="gesture">
+      <svg viewBox="0 0 176 64" role="img" aria-label="${gs.name}: ${gs.act}">${gs.svg}</svg>
+      <div class="gh"><h3>${gs.name}</h3>${gs.tag ? `<span class="tag">${gs.tag}</span>` : ''}</div>
+      <p>${gs.act}</p>
+      <span class="gs">${gs.spec}</span>
+    </article>`).join('');
+
+  /* ---------- curvas ---------- */
+  document.querySelectorAll('svg[data-bezier]').forEach(svg => {
+    const [x1, y1, x2, y2] = svg.dataset.bezier.split(',').map(Number);
+    const P = (x, y) => `${x * 100} ${100 - y * 100}`;
+    svg.innerHTML = `<rect class="cv-grid" x="0" y="0" width="100" height="100" rx="2"/>
+      <line class="cv-h" x1="0" y1="100" x2="${x1 * 100}" y2="${100 - y1 * 100}"/>
+      <line class="cv-h" x1="100" y1="0" x2="${x2 * 100}" y2="${100 - y2 * 100}"/>
+      <circle class="cv-p" cx="${x1 * 100}" cy="${100 - y1 * 100}" r="2.6"/>
+      <circle class="cv-p" cx="${x2 * 100}" cy="${100 - y2 * 100}" r="2.6"/>
+      <path class="cv-c" d="M${P(0, 0)} C${P(x1, y1)} ${P(x2, y2)} ${P(1, 1)}"/>
+      <circle class="cv-ball" cx="100" cy="0" r="4.5"/>`;
+  });
+
+  /* ---------- ícones ---------- */
+  const icon = sz => `<figure><svg width="${sz}" height="${sz}" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="112" fill="#0B0D13"/><rect x="1.5" y="1.5" width="509" height="509" rx="110.5" fill="none" stroke="#262C3B" stroke-width="3"/><svg x="96" y="96" width="320" height="320" viewBox="0 0 48 48" style="color:#EEF0F6"><use href="#mark"/></svg></svg><figcaption>${sz} px</figcaption></figure>`;
+  document.getElementById('icons').innerHTML = [112, 64, 32, 16].map(icon).join('');
+
+  /* ---------- presets ---------- */
+  const PRESETS = { resp: [3, .05, .4], eq: [1, .012, .8], est: [.35, .003, 1.5] };
+  document.querySelectorAll('input[name="preset"]').forEach(r => r.addEventListener('change', () => {
+    const [mc, b, dz] = PRESETS[r.value];
+    document.getElementById('seg-note').textContent = `minCutoff ${fmt(mc, 2)} Hz · β ${fmt(b, 3)} · zona morta ${fmt(dz, 1)}%`;
+  }));
+
+  /* ---------- copiar tokens ---------- */
+  const copyBtn = document.getElementById('copy');
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(document.getElementById('code').innerText);
+      copyBtn.textContent = 'Copiado';
+    } catch (e) {
+      const sel = getSelection(), range = document.createRange();
+      range.selectNodeContents(document.getElementById('code'));
+      sel.removeAllRanges(); sel.addRange(range);
+      copyBtn.textContent = 'Selecionado · Ctrl+C';
+    }
+    setTimeout(() => { copyBtn.textContent = 'Copiar'; }, 2000);
+  });
+
+  /* ---------- palco: laser com One Euro Filter ---------- */
+  class OneEuro {
+    constructor(minCutoff, beta, dCutoff = 1) { Object.assign(this, { minCutoff, beta, dCutoff }); this.reset(); }
+    reset() { this.x = null; this.dx = 0; this.t = null; }
+    static a(cutoff, dt) { const tau = 1 / (2 * Math.PI * cutoff); return 1 / (1 + tau / dt); }
+    filter(v, t) {
+      if (this.x === null) { this.x = v; this.t = t; return v; }
+      const dt = Math.min(Math.max((t - this.t) / 1000, 1 / 240), .1); this.t = t;
+      const d = (v - this.x) / dt;
+      this.dx += OneEuro.a(this.dCutoff, dt) * (d - this.dx);
+      const cutoff = this.minCutoff + this.beta * Math.abs(this.dx);
+      this.x += OneEuro.a(cutoff, dt) * (v - this.x);
+      return this.x;
+    }
+  }
+
+  const stage = document.getElementById('stage');
+  const cv = document.getElementById('laser');
+  const ctx = cv.getContext('2d');
+  const chip = document.getElementById('track-chip'), chipText = document.getElementById('track-text');
+  const slider = document.getElementById('smooth'), readout = document.getElementById('smooth-readout');
+  const fx = new OneEuro(1, .012), fy = new OneEuro(1, .012);
+  let W = 0, H = 0;
+
+  const setChip = (state, text) => { chip.dataset.state = state; chipText.textContent = text; };
+  function applySmooth() {
+    const v = slider.value / 100;
+    const mc = Math.exp(Math.log(3) + (Math.log(.35) - Math.log(3)) * v);
+    const b = Math.exp(Math.log(.05) + (Math.log(.003) - Math.log(.05)) * v);
+    fx.minCutoff = fy.minCutoff = mc; fx.beta = fy.beta = b;
+    const name = v < .34 ? 'Responsivo' : v < .67 ? 'Equilibrado' : 'Estável';
+    readout.innerHTML = `${name} <span>· ${fmt(mc, 2)} Hz · β ${fmt(b, 3)}</span>`;
+    slider.style.setProperty('--p', slider.value + '%');
+  }
+  slider.addEventListener('input', () => { applySmooth(); if (reduce && mode === 'auto') drawStatic(); });
+  applySmooth();
+
+  function resize() {
+    const r = stage.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2);
+    W = r.width; H = r.height;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (reduce && mode === 'auto') drawStatic();
+  }
+
+  const targets = () => [...stage.querySelectorAll('[data-circle]')];
+  function ellipseFor(el) {
+    const s = stage.getBoundingClientRect(), r = el.getBoundingClientRect();
+    return { cx: r.left - s.left + r.width / 2, cy: r.top - s.top + r.height / 2, rx: r.width / 2 + 16, ry: r.height / 2 + 12 };
+  }
+  const ePoint = (e, th) => { const k = 1 + .04 * Math.sin(3 * th + .8); return [e.cx + e.rx * k * Math.cos(th), e.cy + e.ry * k * Math.sin(th)]; };
+  const glide = p => 1 - Math.pow(1 - p, 3);
+  const inOut = p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+  let gz = 0;
+  const gauss = () => { let u = 0, v = 0; while (!u) u = Math.random(); while (!v) v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); };
+
+  let mode = 'auto', pressed = false, resumeTimer = null, visible = true, running = false;
+  let target = [0, 0], raw = [0, 0], pos = [0, 0], lv = 1;
+  let trail = [], ann = null;
+  const TH0 = -2.55, TURN = Math.PI * 2 * 1.1;
+  let seq = { i: 0, phase: 'travel', t0: 0, from: null, e: null };
+
+  function startCycle(now) {
+    const list = targets();
+    seq.e = ellipseFor(list[seq.i % list.length]);
+    seq.from = target.slice(); seq.phase = 'travel'; seq.t0 = now;
+  }
+
+  function autoStep(now) {
+    if (!seq.e) startCycle(now);
+    const e = seq.e, el = now - seq.t0;
+    if (seq.phase === 'travel') {
+      const p = Math.min(el / 850, 1), to = ePoint(e, TH0);
+      target = lerp(seq.from, to, glide(p));
+      if (p >= 1) { seq.phase = 'draw'; seq.t0 = now; ann = { pts: [], alpha: 1, state: 'drawing' }; }
+    } else if (seq.phase === 'draw') {
+      const p = Math.min(el / 1250, 1);
+      target = ePoint(e, TH0 + inOut(p) * TURN);
+      if (p >= 1) { seq.phase = 'hold'; seq.t0 = now; seq.from = target.slice(); ann.state = 'hold'; ann.t = now; }
+    } else if (seq.phase === 'hold') {
+      const p = Math.min(el / 1500, 1);
+      target = lerp(seq.from, [e.cx + e.rx * 1.15, e.cy + e.ry * 1.4], glide(p) * .6);
+      if (p >= 1) { seq.i++; seq.e = null; startCycle(now); }
+    }
+  }
+
+  function annotationStep(now) {
+    if (!ann) return;
+    if (ann.state === 'drawing') ann.pts.push(pos.slice());
+    else if (ann.state === 'hold' && now - ann.t > 1600) { ann.state = 'fading'; ann.t = now; }
+    else if (ann.state === 'fading') { ann.alpha = 1 - (now - ann.t) / 500; if (ann.alpha <= 0) ann = null; }
+  }
+
+  function render() {
+    ctx.clearRect(0, 0, W, H);
+    const unit = Math.max(Math.min(W / 700, 1.4), .7);
+    if (ann && ann.pts.length > 2) {
+      ctx.save();
+      ctx.globalAlpha = Math.max(ann.alpha, 0);
+      ctx.strokeStyle = '#FFB23E'; ctx.lineWidth = 3.4 * unit; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      ctx.shadowColor = 'rgba(255,178,62,.6)'; ctx.shadowBlur = 12;
+      ctx.beginPath(); ctx.moveTo(ann.pts[0][0], ann.pts[0][1]);
+      for (let i = 1; i < ann.pts.length - 1; i++) {
+        const m = [(ann.pts[i][0] + ann.pts[i + 1][0]) / 2, (ann.pts[i][1] + ann.pts[i + 1][1]) / 2];
+        ctx.quadraticCurveTo(ann.pts[i][0], ann.pts[i][1], m[0], m[1]);
+      }
+      ctx.stroke(); ctx.restore();
+    }
+    if (lv < .02) return;
+    ctx.save(); ctx.globalAlpha = lv; ctx.lineCap = 'round';
+    for (let i = 1; i < trail.length; i++) {
+      const k = i / trail.length;
+      ctx.strokeStyle = `rgba(255,178,62,${(k * k * .5).toFixed(3)})`;
+      ctx.lineWidth = (1 + k * 3) * unit;
+      ctx.beginPath(); ctx.moveTo(trail[i - 1][0], trail[i - 1][1]); ctx.lineTo(trail[i][0], trail[i][1]); ctx.stroke();
+    }
+    ctx.strokeStyle = 'rgba(124,212,234,.65)'; ctx.lineWidth = 1.3;
+    ctx.beginPath(); ctx.arc(raw[0], raw[1], 4 * unit, 0, Math.PI * 2); ctx.stroke();
+    const R = 24 * unit, gr = ctx.createRadialGradient(pos[0], pos[1], 0, pos[0], pos[1], R);
+    gr.addColorStop(0, 'rgba(255,231,194,.95)'); gr.addColorStop(.2, 'rgba(255,178,62,.55)'); gr.addColorStop(1, 'rgba(255,178,62,0)');
+    ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(pos[0], pos[1], R, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#FFF4E0'; ctx.beginPath(); ctx.arc(pos[0], pos[1], 3.4 * unit, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+  }
+
+  function frame(now) {
+    if (!visible || (reduce && mode === 'auto')) { running = false; return; }
+    if (mode === 'auto') autoStep(now);
+    gz += .04;
+    raw = [target[0] + gauss() * 2.6 + Math.sin(gz) * 1.4, target[1] + gauss() * 2.6 + Math.cos(gz * .8) * 1.4];
+    pos = [fx.filter(raw[0], now), fy.filter(raw[1], now)];
+    trail.push(pos.slice()); if (trail.length > 18) trail.shift();
+    annotationStep(now);
+    const want = mode === 'search' ? 0 : 1;
+    lv += (want - lv) * .12;
+    render();
+    requestAnimationFrame(frame);
+  }
+  function run() { if (!running && visible) { running = true; requestAnimationFrame(frame); } }
+
+  function drawStatic() {
+    const list = targets(); if (!list.length || !W) return;
+    const e = ellipseFor(list[0]);
+    ann = { pts: [], alpha: 1, state: 'hold', t: Infinity };
+    for (let i = 0; i <= 80; i++) ann.pts.push(ePoint(e, TH0 + (i / 80) * TURN));
+    pos = raw = [e.cx + e.rx * 1.1, e.cy + e.ry * 1.3]; trail = []; lv = 1;
+    render();
+  }
+
+  const local = ev => { const r = stage.getBoundingClientRect(); return [ev.clientX - r.left, ev.clientY - r.top]; };
+  stage.addEventListener('pointermove', ev => {
+    if (mode !== 'manual') {
+      if (mode === 'search' || lv < .1) { fx.reset(); fy.reset(); trail = []; }
+      if (ann && ann.state === 'drawing') { ann.state = 'fading'; ann.t = performance.now(); }
+      mode = 'manual'; seq.e = null; setChip('ok', 'Mão detectada');
+    }
+    clearTimeout(resumeTimer);
+    target = local(ev);
+    run();
+  });
+  stage.addEventListener('pointerdown', ev => {
+    if (ev.target.closest('input, label')) return;
+    pressed = true; mode = 'manual'; target = local(ev);
+    ann = { pts: [], alpha: 1, state: 'drawing' };
+    try { stage.setPointerCapture(ev.pointerId); } catch (e) {}
+    run();
+  });
+  const release = () => {
+    if (!pressed) return;
+    pressed = false;
+    if (ann && ann.state === 'drawing') { ann.state = 'hold'; ann.t = performance.now(); }
+  };
+  stage.addEventListener('pointerup', release);
+  stage.addEventListener('pointercancel', release);
+  stage.addEventListener('pointerleave', () => {
+    if (pressed) return;
+    mode = 'search'; setChip('search', 'Procurando mão');
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => {
+      setChip('ok', 'Mão detectada');
+      fx.reset(); fy.reset(); trail = [];
+      mode = 'auto'; seq.e = null;
+      if (reduce) { drawStatic(); running = false; } else run();
+    }, 1500);
+  });
+
+  new ResizeObserver(() => { resize(); seq.e = null; }).observe(stage);
+  new IntersectionObserver(entries => {
+    visible = entries[0].isIntersecting;
+    if (visible) run();
+  }).observe(stage);
+
+  const boot = () => {
+    resize();
+    const list = targets();
+    if (list.length) { const e = ellipseFor(list[0]); target = [e.cx - e.rx * 1.8, e.cy + e.ry * 2]; }
+    if (reduce) drawStatic(); else run();
+  };
+  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(boot);
+})();
+</script>

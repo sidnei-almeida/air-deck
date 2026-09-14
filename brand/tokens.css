@@ -1,0 +1,73 @@
+/* Air-Deck — design tokens v1.0
+ * Dark-first: o modo apresentação sempre roda sobre Blecaute.
+ * Fontes (Google Fonts): Bricolage Grotesque, Geist, Geist Mono.
+ */
+
+:root {
+  /* Marca */
+  --ad-blecaute: #0B0D13;   /* palco: fundo principal */
+  --ad-palco: #151924;      /* superfícies elevadas, HUD */
+  --ad-trelica: #262C3B;    /* linhas, trilhos, divisórias */
+  --ad-ardosia: #8A91A5;    /* texto secundário */
+  --ad-halo: #EEF0F6;       /* texto principal / fundo claro */
+  --ad-holofote: #FFB23E;   /* ponteiro, anotação, foco — uso raro */
+  --ad-rastro: #7CD4EA;     /* mão, landmarks, rastreamento */
+
+  /* Papel: tudo fora do palco (início, treino, folhas sobre a apresentação) */
+  --ad-papel: #F1ECE2;      /* fundo quadriculado */
+  --ad-folha: #FBF8F2;      /* folha apoiada no papel */
+  --ad-pauta: #D9D1C1;      /* linhas e bordas */
+  --ad-grafite: #1B1915;    /* tinta: texto e botões */
+  --ad-lapis: #6E6759;      /* texto secundário */
+  --ad-marcador: #F4A62A;   /* traços desenhados à mão sobre o papel */
+  --ad-marca-texto: rgb(255 178 62 / 0.45); /* grifo */
+  --ad-rastro-papel: #1C7C93; /* mão desenhada sobre o papel */
+  --ad-ok-papel: #1E9160;
+  --ad-erro-papel: #C93D52;
+
+  /* Estados de rastreamento (nunca substituem o Holofote) */
+  --ad-state-tracking: #52D6A0;
+  --ad-state-searching: #8A91A5;
+  --ad-state-lost: #F0677B;
+
+  /* Tipografia */
+  --ad-font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --ad-font-body: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ad-font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --ad-text-display: 600 clamp(44px, 6.4vw, 88px) / 0.92 var(--ad-font-display); /* stretch 88%, tracking -0.035em */
+  --ad-text-h1: 600 56px / 1 var(--ad-font-display);                            /* tracking -0.03em */
+  --ad-text-h2: 600 36px / 1.05 var(--ad-font-display);                         /* tracking -0.02em */
+  --ad-text-h3: 600 20px / 1.3 var(--ad-font-body);
+  --ad-text-body: 400 16px / 1.6 var(--ad-font-body);
+  --ad-text-small: 400 14px / 1.5 var(--ad-font-body);
+  --ad-text-label: 500 12px / 1.2 var(--ad-font-mono);                          /* uppercase, tracking 0.08em */
+
+  /* Forma */
+  --ad-radius-stage: 20px;
+  --ad-radius-panel: 14px;
+  --ad-radius-pill: 999px;
+  --ad-hud-bg: rgb(11 13 19 / 0.72);
+  --ad-hud-blur: 16px;
+
+  /* Movimento */
+  --ad-ease-glide: cubic-bezier(0.22, 1, 0.36, 1);   /* troca de slide, zoom, HUD */
+  --ad-ease-draw: cubic-bezier(0.65, 0, 0.35, 1);    /* traço de anotação */
+  --ad-dur-instant: 90ms;    /* feedback do ponteiro */
+  --ad-dur-quick: 180ms;     /* chips, HUD */
+  --ad-dur-slide: 420ms;     /* troca de slide */
+  --ad-dur-draw: 600ms;      /* círculo de anotação */
+  --ad-annotation-hold: 1600ms;
+  /* Zoom (Framer Motion): spring { stiffness: 220, damping: 28, mass: 0.9 } */
+
+  /* Gestos */
+  --ad-gesture-confirm-frames: 3;   /* histerese aberta/fechada */
+  --ad-gesture-cooldown: 650ms;     /* intervalo mínimo entre trocas de slide */
+  --ad-reset-hold: 1000ms;          /* palma parada para reset de zoom */
+  --ad-calibration: 5000ms;
+
+  /* One Euro Filter (coordenadas em px de tela, dCutoff 1.0) */
+  /* Responsivo:  minCutoff 3.00 Hz · beta 0.050 · dead zone 0.4% */
+  /* Equilibrado: minCutoff 1.00 Hz · beta 0.012 · dead zone 0.8% */
+  /* Estável:     minCutoff 0.35 Hz · beta 0.003 · dead zone 1.5% */
+}
