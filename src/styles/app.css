@@ -502,6 +502,7 @@ kbd {
 .index-foot div { display: flex; align-items: flex-start; gap: 10px; }
 .index-foot svg { flex: none; margin-top: 1px; }
 .index-foot .link { font-weight: 500; color: var(--ad-lapis); }
+.index-foot a.link { text-decoration: none; }
 
 /* ---------- gesture glyphs (drawn on paper) ---------- */
 /* The hand is drawn in pencil; only what it does gets the marker. */

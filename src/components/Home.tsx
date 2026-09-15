@@ -350,6 +350,19 @@ export function Home({ onPresent }: { onPresent: (doc: PDFDocumentProxy, name: s
                 </button>
               </span>
             </div>
+            <div>
+              <Icon name="github" size={16} />
+              <span>
+                Built by{' '}
+                <a className="link" href="https://github.com/sidnei-almeida" target="_blank" rel="noopener noreferrer">
+                  Sidnei Almeida
+                </a>{' '}
+                and{' '}
+                <a className="link" href="https://github.com/filipecunhaadv" target="_blank" rel="noopener noreferrer">
+                  Filipe Cunha
+                </a>
+              </span>
+            </div>
           </footer>
         </aside>
       </main>
